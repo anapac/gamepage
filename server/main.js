@@ -33,6 +33,6 @@ if (cluster.isMaster) {
   app.use('/', webRouter);
 
   app.listen(config.port, () => {
-    console.log(`Worker ${process.pid} running in ${env} mode on port ${config.port}!`);
+    console.log(`Worker ${process.pid} running in ${env} moded on port ${config.port}!`);
   });
 }
