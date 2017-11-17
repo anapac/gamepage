@@ -1,7 +1,9 @@
+const path = require('path');
 const cluster = require('cluster');
 const maxNumCpus = require('os').cpus().length;
 
 const env = process.env.NODE_ENV || 'development';
+const rootPath = path.resolve(__dirname, '..');
 
 // server config
 const config = require('./config')[env];
@@ -11,6 +13,13 @@ require('./config/mongoose')(config);
 
 if (cluster.isMaster) {
   console.info(`Master process ${process.pid} is running...`);
+
+  // fetch package.json data into the current process
+  process.packageJson = {};
+  require('importpackagejson')(rootPath, [
+    'name', 'version', 'dependencies'
+  ], process.packageJson);
+  console.info(process.packageJson);
 
   // fork workers
   for (let worker = 0; worker < maxNumCpus; ++worker) {
