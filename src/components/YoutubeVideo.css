@@ -1,0 +1,10 @@
+iframe {
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+iframe.youtubeVideo {
+  width: 560px;
+  height: 315px;
+}
