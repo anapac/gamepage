@@ -15,7 +15,12 @@ module.exports = config => {
     reconnectTries: 5
   };
 
-  mongoose.connect(config.db, options);
+  mongoose.connect(config.db, options)
+    .then()
+    .catch(err => {
+      console.error('Error connecting to DB');
+      console.error(err);
+    });
   const db = mongoose.connection;
 
   db.once('open', err => {
