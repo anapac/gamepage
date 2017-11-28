@@ -30,7 +30,7 @@ module.exports = config => {
       return;
     }
 
-    console.info('DB connection established successfully.');
+    // console.info('DB connection established successfully.');
   });
 
   db.on('error', err => {
