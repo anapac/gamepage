@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 router.use((req, res, next) => {
-  console.log(`API => ${req.url}`);
+  // console.log(`API => ${req.url}`);
   next();
 });
 
